@@ -101,18 +101,11 @@ function set_time(minutes, hours) {
 	draw_digit(8, position[3], digit_off_color);
 	draw_digit(minutes % 10, position[3], digit_on_color);
 
-	if (hours == 24) {
-		hours = 0;
-		draw_digit(8, position[0], digit_off_color);
-		draw_digit(8, position[1], digit_off_color);
-		draw_digit(0, position[1], digit_on_color);
-	} else {
-		draw_digit(8, position[0], digit_off_color);
-		if (Math.trunc(hours / 10) != 0)
-			draw_digit(Math.trunc(hours / 10), position[0], digit_on_color);
-		draw_digit(8, position[1], digit_off_color);
-		draw_digit(hours % 10, position[1], digit_on_color);
-	}
+	draw_digit(8, position[0], digit_off_color);
+	if (Math.trunc(hours / 10) != 0)
+		draw_digit(Math.trunc(hours / 10), position[0], digit_on_color);
+	draw_digit(8, position[1], digit_off_color);
+	draw_digit(hours % 10, position[1], digit_on_color);
 }
 
 function dots_off() {
@@ -132,6 +125,8 @@ function dots_on(next_time, minute, hour, sec) {
 			if (minute == 60) {
 				minute = 0;
 				hour++;
+				if (hour == 24)
+					hour = 0;
 			}
 			if (next_time > time)
 				set_time(minute, hour);
@@ -202,7 +197,7 @@ function init() {
 	draw_digit(8, position[3], digit_off_color);
 	draw_dot(clock.dot.d1, digit_off_color);
 	draw_dot(clock.dot.d2, digit_off_color);
-
+	// set time board
 	time = Date.now();
 	minute = Math.trunc(time / 60000) % 60;
 	hour = Math.trunc(time / 3600000) % 24 - (new Date().getTimezoneOffset() / 60);

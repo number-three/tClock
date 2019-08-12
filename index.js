@@ -40,7 +40,6 @@ var clock;
 var position = [];
 var digit_on_color;
 var digit_off_color;
-var timer;
 
 function draw_part(part, color) {			
 	ctx.fillStyle = color;
@@ -151,8 +150,12 @@ function dots_on(next_time, minute, hour, sec) {
 	draw_dot(clock.dot.d1, digit_on_color);
 	draw_dot(clock.dot.d2, digit_on_color);
 	
-	timer = setTimeout(dots_off, 500);
-	timer = setTimeout(function() { dots_on(next_time, minute, hour, sec);}, next_time - time);
+	window.setTimeout(function() {
+		dots_off();
+	}, 500);
+	window.setTimeout(function() {
+		dots_on(next_time, minute, hour, sec);
+	}, next_time - time);
 }
 
 async function bell(count) {
@@ -236,9 +239,15 @@ var next_time = time + (1000 - (time % 1000));
 if (time % 1000 < 500) {
 	draw_dot(clock.dot.d1, digit_on_color);
 	draw_dot(clock.dot.d2, digit_on_color);
-	timer = setTimeout(dots_off, 500 - time);
-	timer = setTimeout(function() { dots_on(next_time, minute, hour, sec);}, 1000 - time);
+	window.setTimeout(function() {
+		dots_off();
+	}, 500 - time);
+	window.setTimeout(function() {
+		dots_on(next_time, minute, hour, sec);
+	}, 1000 - time % 1000);
 } else
-	timer = setTimeout(function() { dots_on(next_time, minute, hour, sec);}, 1000 - time);
+	window.setTimeout(function() {
+		dots_on(next_time, minute, hour, sec);
+	}, 1000 - time % 1000);
 
 window.onresize = init;

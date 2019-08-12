@@ -241,7 +241,7 @@ if (time % 1000 < 500) {
 	draw_dot(clock.dot.d2, digit_on_color);
 	window.setTimeout(function() {
 		dots_off();
-	}, 500 - time);
+	}, 500 - time % 1000);
 	window.setTimeout(function() {
 		dots_on(next_time, minute, hour, sec);
 	}, 1000 - time % 1000);

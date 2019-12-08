@@ -1,3 +1,3 @@
 # tClock
 
-https://spaceswimmer.github.io/tClock
+https://number-three.github.io/tClock

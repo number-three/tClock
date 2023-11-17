@@ -133,13 +133,13 @@ function dots_on(next_time, minute, hour, sec) {
 				hour++;
 			}
 			if (next_time > time) {
-				if (minute == 30)
+				if (minute % 5 == 0/*== 30*/)
 					bell(1);
-				else if (minute == 0) {
+				/*else*/ if (minute == 0) {
 					var count = hour;
 					if (count > 12)
 						count -= 12;
-					bell(count);
+					//bell(count);
 				}
 				set_time(minute, hour);
 			}

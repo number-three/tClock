@@ -126,7 +126,6 @@ function dots_on(next_time, minute, hour, sec) {
 		sec++;
 		next_time += 1000;
 		if (sec == 60) {
-			bell(1);
 			sec = 0;
 			minute++;
 			if (minute == 60) {

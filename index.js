@@ -123,8 +123,8 @@ function dots_on(next_time, minute, hour, sec) {
 	var time = Date.now();
 
 	If (sec % 15 == 0) {
-		//bell(1);
-		alert('here must be bell");
+		bell(1);
+		alert("here must be bell");
 	}
 	do {
 		sec++;

@@ -124,7 +124,7 @@ function dots_on(next_time, minute, hour, sec) {
 
 	If (sec % 15 == 0) {
 		bell(1);
-		alarm('here must be bell");
+		alert('here must be bell");
 	}
 	do {
 		sec++;

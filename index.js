@@ -122,10 +122,10 @@ function dots_off() {
 function dots_on(next_time, minute, hour, sec) {
 	var time = Date.now();
 
-	If (sec % 15 == 0) {
-		bell(1);
+	If (sec % 15 == 0)
+		//bell(1);
 		console.log("here must be bell");
-	}
+	
 	do {
 		sec++;
 		next_time += 1000;

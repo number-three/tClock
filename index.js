@@ -122,11 +122,13 @@ function dots_off() {
 function dots_on(next_time, minute, hour, sec) {
 	var time = Date.now();
 
+	If (sec % 15 == 0)
+		bell(1);
+
 	do {
 		sec++;
 		next_time += 1000;
 		if (sec == 60) {
-			bell(2);
 			sec = 0;
 			minute++;
 			if (minute == 60) {
